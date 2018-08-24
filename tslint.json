@@ -2,7 +2,7 @@
     "enable": true,
     "run": "onSave",
     "defaultSeverity": "error",
-    "extends": ["tslint:latest", "tslint-config-prettier"],
+    "extends": ["tslint:latest"],
     "jsRules": {},
     "rules": {
       "curly": true,
