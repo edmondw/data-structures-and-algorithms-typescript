@@ -19,6 +19,11 @@ module.exports = {
         options: {
           transpileOnly: true
         }
+      },
+      {
+        test: /\.ts$/,
+        enforce: 'pre',
+        loader: 'tslint-loader'
       }
     ]
   },
