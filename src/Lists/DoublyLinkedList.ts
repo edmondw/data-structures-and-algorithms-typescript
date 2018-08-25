@@ -12,39 +12,39 @@ export default class DoublyLinkedList<E> {
     this.sentinelHead.next = this.sentinelTail;
   }
 
-  public getSize() {
+  getSize() {
     return this.size;
   }
 
-  public isEmpty(): boolean {
+  isEmpty(): boolean {
     return this.size === 0;
   }
 
-  public first(): E {
+  first(): E {
     return (this.isEmpty()) ? null : this.sentinelHead.next.element;
   }
 
-  public last(): E {
+  last(): E {
     return (this.isEmpty()) ? null : this.sentinelTail.previous.element;
   }
 
-  public addFirst(e: E): void {
+  addFirst(e: E): void {
     this.addBetween(e, this.sentinelHead, this.sentinelHead.next);
   }
 
-  public addLast(e: E): void {
+  addLast(e: E): void {
     this.addBetween(e, this.sentinelTail.previous, this.sentinelTail);
   }
 
-  public removeFirst(): E {
+  removeFirst(): E {
     return this.remove(this.sentinelHead.next);
   }
 
-  public removeLast(): E {
+  removeLast(): E {
     return this.remove(this.sentinelTail.previous);
   }
 
-  public createIterator() {
+  createIterator() {
     let currentNode = this.sentinelHead;
     let positionIndex = 0;
 

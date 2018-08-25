@@ -6,23 +6,23 @@ export default class SinglyLinkedList<E> {
   private head: ListNode<E> = null;
   private tail: ListNode<E> = null;
 
-  public getSize(): number {
+  getSize(): number {
     return this.size;
   }
 
-  public isEmpty(): boolean {
+  isEmpty(): boolean {
     return this.size === 0;
   }
 
-  public first(): E {
+  first(): E {
     return (this.isEmpty()) ? null : this.head.element;
   }
 
-  public last(): E {
+  last(): E {
     return (this.isEmpty()) ? null : this.tail.element;
   }
 
-  public addFirst(e: E): void {
+  addFirst(e: E): void {
     this.head = new ListNode(e, {next: this.head});
     if (this.isEmpty()) {
       this.tail = this.head;
@@ -30,7 +30,7 @@ export default class SinglyLinkedList<E> {
     this.size++;
   }
 
-  public addLast(e: E): void {
+  addLast(e: E): void {
     const newNode = new ListNode(e);
     if (this.isEmpty()) {
       this.head = newNode;
@@ -41,7 +41,7 @@ export default class SinglyLinkedList<E> {
     this.size++;
   }
 
-  public removeFirst(): E {
+  removeFirst(): E {
     if (this.isEmpty()) {
       return null;
     }
@@ -54,7 +54,7 @@ export default class SinglyLinkedList<E> {
     return removedElement;
   }
 
-  public createIterator(): ListIterator<E> {
+  createIterator(): ListIterator<E> {
     let positionIndex = 0;
     let currentNode = this.head;
     let nextElement: E = null;
@@ -75,7 +75,7 @@ export default class SinglyLinkedList<E> {
     return iterator;
   }
 
-  public printToConsole(): void {
+  printToConsole(): void {
     const iterator = this.createIterator();
     while (iterator.hasNext()) {
       console.log(iterator.next());
