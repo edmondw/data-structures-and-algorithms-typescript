@@ -13,7 +13,6 @@
       "class-name": true,
       "encoding": true,
       "eofline": true,
-      "file-name-casing": [true, "kebab-case"],
       "import-spacing": true,
       "interface-name": false,
       "linebreak-style": [true, "CRLF"],
@@ -53,7 +52,9 @@
           },
           "esSpectCompliant": true
         }
-      ]
+      ],
+      "no-console": false,
+      "only-arrow-functions": false
     },
     "rulesDirectory": []
   }
