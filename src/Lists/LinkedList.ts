@@ -19,7 +19,7 @@ export default class LinkedList<E> implements List<E> {
       throw new RangeError(ListErrorMessages.invalidIndexMsg(i));
     }
     const nodeAtPosition = this.find(i);
-    this.addBetween(e, nodeAtPosition, nodeAtPosition.next);
+    this.addBetween(e, nodeAtPosition.previous, nodeAtPosition);
     this._size++;
   }
 
@@ -87,7 +87,7 @@ export default class LinkedList<E> implements List<E> {
   }
 
   iterator() {
-    let currentNode = this.sentinelHead.next;
+    let currentNode = this.sentinelHead;
     let currentIndex = -1;
     const iterator: ListIterator<E> = {
       hasNext: () => currentNode.next !== this.sentinelTail,
@@ -130,6 +130,17 @@ export default class LinkedList<E> implements List<E> {
 
   size(): number {
     return this._size;
+  }
+
+  printToConsole() {
+    if (this.isEmpty()) {
+      console.log('The list is empty. There is nothing to print.');
+    }
+    const iterator = this.iterator();
+    while (iterator.hasNext()) {
+      const temp = iterator.next();
+      console.log(`The element at index ${temp.index} is ${temp.value}.`);
+    }
   }
 
   private addBetween(e: E, predecessor: ListNode<E>, successor: ListNode<E>) {
