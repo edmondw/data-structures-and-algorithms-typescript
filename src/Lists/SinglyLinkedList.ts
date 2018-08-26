@@ -55,7 +55,7 @@ export default class SinglyLinkedList<E> {
   }
 
   createIterator(): ListIterator<E> {
-    let positionIndex = 0;
+    let positionIndex = -1;
     let currentNode = this.head;
     let nextElement: E = null;
 
@@ -63,12 +63,11 @@ export default class SinglyLinkedList<E> {
       hasNext: () => positionIndex < this.size,
       next: () => {
         if (positionIndex === this.size) {
-          return { value: null, done: true };
+          return { value: null, done: true, index: positionIndex };
         }
         nextElement = currentNode.element;
         currentNode = currentNode.next;
-        ++positionIndex;
-        return { value: nextElement, done: false };
+        return { value: nextElement, done: false, index: ++positionIndex };
       }
     };
 

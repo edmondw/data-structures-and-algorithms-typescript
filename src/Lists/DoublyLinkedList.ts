@@ -46,17 +46,16 @@ export default class DoublyLinkedList<E> {
 
   createIterator() {
     let currentNode = this.sentinelHead;
-    let positionIndex = 0;
+    let positionIndex = -1;
 
     const iterator: ListIterator<E> = {
       hasNext: () => positionIndex < this.size,
       next: () => {
         if (this.isEmpty()) {
-          return { value: null, done: true };
+          return { value: null, done: true, index: positionIndex };
         }
         currentNode = currentNode.next;
-        ++positionIndex;
-        return { value: currentNode.element, done: false };
+        return { value: currentNode.element, done: false, index: ++positionIndex };
       }
     };
     return iterator;
