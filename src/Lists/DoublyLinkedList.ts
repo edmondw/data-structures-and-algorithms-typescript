@@ -52,11 +52,11 @@ export default class DoublyLinkedList<E> {
       hasNext: () => positionIndex < this.size,
       next: () => {
         if (this.isEmpty()) {
-          return null;
+          return { value: null, done: true };
         }
         currentNode = currentNode.next;
         ++positionIndex;
-        return currentNode.element;
+        return { value: currentNode.element, done: false };
       }
     };
     return iterator;

@@ -63,12 +63,12 @@ export default class SinglyLinkedList<E> {
       hasNext: () => positionIndex < this.size,
       next: () => {
         if (positionIndex === this.size) {
-          throw new RangeError('No available next element while iterating.');
+          return { value: null, done: true };
         }
         nextElement = currentNode.element;
         currentNode = currentNode.next;
         ++positionIndex;
-        return nextElement;
+        return { value: nextElement, done: false };
       }
     };
 
@@ -78,7 +78,7 @@ export default class SinglyLinkedList<E> {
   printToConsole(): void {
     const iterator = this.createIterator();
     while (iterator.hasNext()) {
-      console.log(iterator.next());
+      console.log(iterator.next().value);
     }
   }
 }
